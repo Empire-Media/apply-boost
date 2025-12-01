@@ -116,3 +116,38 @@ The privacy.html, terms.html, and gdpr.html files contain legal text. When updat
 - Ensure legal review before publishing changes
 - Maintain consistent formatting with main site
 - Update "Last Updated" dates when content changes
+
+## Deployment
+
+### GitHub Pages
+This site is deployed to GitHub Pages using GitHub Actions. The workflow file is located at `.github/workflows/deploy.yml`.
+
+**Automatic Deployment:**
+- Every push to the `main` branch triggers automatic deployment
+- Site is available at: https://empire-media.github.io/apply-boost/
+
+**Custom Domain Setup:**
+1. Add a `CNAME` file in the root directory with your domain name
+2. In GitHub repo settings → Pages → Custom domain, enter your domain
+3. Enable "Enforce HTTPS"
+
+### Namecheap DNS Configuration
+To point your Namecheap domain to GitHub Pages:
+
+**For apex domain (e.g., applyboost.com):**
+1. Go to Namecheap Dashboard → Domain List → Manage → Advanced DNS
+2. Add these A records:
+   ```
+   Type: A Record, Host: @, Value: 185.199.108.153
+   Type: A Record, Host: @, Value: 185.199.109.153
+   Type: A Record, Host: @, Value: 185.199.110.153
+   Type: A Record, Host: @, Value: 185.199.111.153
+   ```
+
+**For www subdomain:**
+3. Add CNAME record:
+   ```
+   Type: CNAME Record, Host: www, Value: empire-media.github.io.
+   ```
+
+**DNS propagation** can take up to 48 hours but usually completes within a few hours.
